@@ -1,9 +1,8 @@
-
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { LoadingSpinner } from "./LoadingSpinner";
-import { Copy, ArrowRight } from "lucide-react";
+import { Copy, ArrowRight, Share2 } from "lucide-react";
 import { useToast } from "@/components/ui/use-toast";
 
 export function TranslationBox() {
@@ -23,7 +22,6 @@ export function TranslationBox() {
     }
 
     setIsLoading(true);
-    // TODO: Add actual translation API call here
     setTimeout(() => {
       setTranslatedText("Translation will appear here...");
       setIsLoading(false);
@@ -37,6 +35,23 @@ export function TranslationBox() {
         title: "Copied!",
         description: "Translation copied to clipboard",
       });
+    }
+  };
+
+  const shareTranslation = async () => {
+    if (translatedText) {
+      try {
+        await navigator.share({
+          title: 'Sanskrit Translation',
+          text: translatedText
+        });
+      } catch (error) {
+        toast({
+          title: "Sharing Failed",
+          description: "Unable to share the translation",
+          variant: "destructive"
+        });
+      }
     }
   };
 
@@ -77,14 +92,24 @@ export function TranslationBox() {
             value={translatedText}
           />
           {translatedText && (
-            <Button
-              size="icon"
-              variant="ghost"
-              className="absolute top-2 right-2"
-              onClick={copyToClipboard}
-            >
-              <Copy className="h-4 w-4" />
-            </Button>
+            <div className="absolute top-2 right-2 flex space-x-2">
+              <Button
+                size="icon"
+                variant="ghost"
+                onClick={copyToClipboard}
+                title="Copy to Clipboard"
+              >
+                <Copy className="h-4 w-4" />
+              </Button>
+              <Button
+                size="icon"
+                variant="ghost"
+                onClick={shareTranslation}
+                title="Share Translation"
+              >
+                <Share2 className="h-4 w-4" />
+              </Button>
+            </div>
           )}
         </div>
       </div>
