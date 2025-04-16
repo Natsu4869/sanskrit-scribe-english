@@ -2,6 +2,19 @@
 @tailwind components;
 @tailwind utilities;
 
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap');
+
+@layer base {
+  .font-playfair {
+    font-family: 'Playfair Display', serif;
+  }
+  
+  .font-sanskrit {
+    font-family: 'Playfair Display', serif;
+    letter-spacing: 0.02em;
+  }
+}
+
 @layer base {
   :root {
     --background: 0 0% 100%;
