@@ -3,8 +3,13 @@ import { TranslationBox } from "@/components/ui/TranslationBox";
 
 const Index = () => {
   return (
-    <div className="min-h-screen flex flex-col items-center bg-gradient-to-b from-[#fdfcfb] to-[#e2d1c3] p-6">
-      <main className="flex-1 flex flex-col items-center justify-center w-full max-w-5xl mx-auto">
+    <div className="min-h-screen flex flex-col items-center bg-cover bg-center bg-no-repeat p-6" 
+         style={{
+           backgroundImage: `url('https://images.unsplash.com/photo-1498050108023-c5249f4df085')`, 
+           backgroundBlendMode: 'soft-light',
+           backgroundColor: 'rgba(255,255,255,0.7)'
+         }}>
+      <main className="flex-1 flex flex-col items-center justify-center w-full max-w-5xl mx-auto bg-white/80 rounded-xl p-8 shadow-lg">
         <div className="text-center mb-12 space-y-4">
           <h1 className="text-4xl font-playfair font-bold text-sanskrit-accent">
             Sanskrit to English Translation
